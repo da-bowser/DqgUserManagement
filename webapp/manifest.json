@@ -1,0 +1,176 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "dk.dhek.DqgUserManagement",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"DEK_AUTH_DQG_Users": {
+				"uri": "/test/dek/authApi/Users.xsodata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"crossNavigation": {
+			"inbounds": {}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_belize"]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "dk.dhek.DqgUserManagement.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "dk.dhek.DqgUserManagement.i18n.i18n"
+				}
+			},
+			"": {
+				"uri": "/test/dek/authApi/Users.xsodata/",
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "DEK_AUTH_DQG_Users",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "dk.dhek.DqgUserManagement.view",
+				"controlAggregation": "pages",
+				"controlId": "idAppControl",
+				"clearControlAggregation": false,
+				"transition": "slide"
+			},
+			"routes": [{
+				"name": "RouteMain",
+				"pattern": "",
+				"target": ["TargetMain"]
+			}, {
+				"name": "RouteToUserDetailsView",
+				"pattern": "UserDetails?user={sUser}",
+				"target": ["TargetAuthUserDetails"]
+			}, {
+				"name": "RouteToGroupDetailsView",
+				"pattern": "GroupDetails?group={sGroup}",
+				"target": ["TargetAuthGroupDetails"]
+			}],
+			"targets": {
+				"TargetMain": {
+					"viewLevel": 1,
+					"viewName": "Main",
+					"routerClass": "sap.m.routing.Router",
+					"viewType": "XML",
+					"async": true,
+					"viewPath": "dk.dhek.DqgUserManagement.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false,
+					"transition": "slide"
+				},
+				"TargetApp": {
+					"viewType": "XML",
+					"viewName": "App",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "dk.dhek.DqgUserManagement.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false,
+					"transition": "slide"
+				},
+				"TargetAuthGroups": {
+					"viewType": "XML",
+					"viewName": "AuthGroups",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "dk.dhek.DqgUserManagement.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false,
+					"transition": "slide"
+				},
+				"TargetAuthUsers": {
+					"viewType": "XML",
+					"viewName": "AuthUsers",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "dk.dhek.DqgUserManagement.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false,
+					"transition": "slide"
+				},
+				"TargetAuthGroupDetails": {
+					"viewType": "XML",
+					"viewName": "AuthGroupDetails",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "dk.dhek.DqgUserManagement.view",
+					"controlAggregation": "pages",
+					"controlId": "idAppControl",
+					"clearControlAggregation": false,
+					"transition": "slide"
+				},
+				"TargetAuthUserDetails": {
+					"viewType": "XML",
+					"viewName": "AuthUserDetails"
+				}
+			}
+		}
+	}
+}

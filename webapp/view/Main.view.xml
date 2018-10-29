@@ -1,0 +1,60 @@
+<mvc:View controllerName="dk.dhek.DqgUserManagement.controller.Main" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<App>
+
+		<pages>
+			<Page 
+				title="{i18n>title}"
+				showHeader="false" 
+				enableScrolling="false"
+			>
+				
+				<content>
+					
+					<IconTabBar
+						id="idIconTabBar"
+						stretchContentHeight="true"
+						showOverflowSelectList="true"
+						enableTabReordering="false"
+						applyContentPadding="false"
+						expandable="false"
+						expanded="true"
+						headerBackgroundDesign="Solid"
+						select="onSelect"
+						headerMode="Inline"
+					>
+						
+						<items>
+							<!-- Authorizations: Groups -->
+							<IconTabFilter
+								id="itfAuthGroups"
+						    	icon="sap-icon://{i18n>iconAuthGroups}" 
+						    	text="{i18n>txtItfAuthGroups}"
+						    	key="keyAuthGroups"
+						    >
+						    	<content>	
+						    		<mvc:XMLView viewName="dk.dhek.DqgUserManagement.view.AuthGroups"></mvc:XMLView>
+						    	</content>
+						   </IconTabFilter>
+						   
+							<!-- Authorizations: Users -->
+							<IconTabFilter
+								id="itfAuthUsers"
+						    	icon="sap-icon://{i18n>iconAuthUsers}" 
+						    	text="{i18n>txtItfAuthUsers}"
+						    	key="keyAuthUsers"
+						    >
+								<content>
+						    		<mvc:XMLView viewName="dk.dhek.DqgUserManagement.view.AuthUsers"></mvc:XMLView>	
+						    	</content>
+						   </IconTabFilter>
+
+						</items>
+					</IconTabBar>
+
+				</content>
+			</Page>
+		</pages>
+
+	</App>
+</mvc:View>

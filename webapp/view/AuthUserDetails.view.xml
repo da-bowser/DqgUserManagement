@@ -1,0 +1,93 @@
+<mvc:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m"
+	controllerName="dk.dhek.DqgUserManagement.controller.AuthUserDetails" 
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	
+	<App>
+		<pages>
+			<Page 
+				id="idPageAuthUserDetails" 
+				title="User details" 
+				showNavButton="true" 
+				navButtonPress="navBack">
+				<content>
+					
+					<IconTabBar
+						id="idIconTabBarDetails"
+						stretchContentHeight="true"
+						showOverflowSelectList="true"
+						enableTabReordering="false"
+						applyContentPadding="false"
+						expandable="false"
+						expanded="true"
+						headerBackgroundDesign="Solid"
+						select="onSelect"
+					>
+						
+						<items>
+							<!-- Authorizations: Groups -->
+							<IconTabFilter
+								id="itfAuthGroups"
+						    	icon="sap-icon://{i18n>iconAuthUsers}" 
+						    	text="Groups"
+						    	key="keyAssignedGroups"
+						    >
+
+								<List 
+									id="idlistAssignedGroups" 
+									noDataText="No assigned groups found" 
+									items="{ 
+										path: '/groups', 
+										sorter: { path: 'name' }
+									}"
+								>
+									<items>
+										<ObjectListItem 
+											title="{name}">
+										</ObjectListItem>
+									</items>
+								</List>
+						   </IconTabFilter>
+
+							<!-- Authorizations: Roles -->
+							<IconTabFilter
+								id="itfAuthRoles"
+						    	icon="sap-icon://{i18n>iconAuthGroups}" 
+						    	text="Roles"
+						    	key="keyAssignedRoles"
+						    >
+								<Table id="idTableAssignedRoles"
+									items="{
+										path: '/roles', 
+										sorter: { path: 'name' } 
+									}"
+								>
+									<columns>
+										<Column><Text text="Subaccount"/></Column>
+										<Column><Text text="Application"/></Column>
+										<Column><Text text="Role"/></Column>
+									</columns>
+									
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{providerAccount}" />
+												<Text text="{applicationName}" />
+												<Text text="{name}" />
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+						   </IconTabFilter>
+					
+						</items>
+					</IconTabBar>
+					
+				</content>
+			</Page>
+			
+		</pages>
+	</App>
+</mvc:View>

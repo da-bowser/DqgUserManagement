@@ -1,0 +1,11 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="test.dek.authApi">
+			<EntityType Name="UsersType">
+				<Key><PropertyRef Name="user_id"/></Key><Property Name="user_id" Type="Edm.String" Nullable="false" MaxLength="40"/><Property Name="first_name" Type="Edm.String" MaxLength="40"/><Property Name="last_name" Type="Edm.String" MaxLength="80"/><Property Name="company" Type="Edm.String" MaxLength="40"/><Property Name="create_date" Type="Edm.DateTime"/></EntityType>
+			<EntityContainer Name="Users" m:IsDefaultEntityContainer="true"><EntitySet Name="Users" EntityType="test.dek.authApi.UsersType"/></EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

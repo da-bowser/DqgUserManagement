@@ -1,0 +1,60 @@
+sap.ui.define([
+], function() {
+	"use strict";
+
+	var _oJsonModel;
+
+	return {
+
+		loadData : function() {
+			var that = this;
+			
+			// Create model
+			var oJSONModel = new sap.ui.model.json.JSONModel();
+			
+			// Build url
+			var sFinalUrl = this.getView().getModel().sServiceUrl + "/FIELD_TYPES";
+
+			// Attach event handler: Request Sent
+			oJSONModel.attachRequestSent(
+				function(oEvent) {
+					// Activate busy indicator
+					that.getView().setBusy(true);
+				}
+			);
+
+			// Attach event handler: Request Completed
+			oJSONModel.attachRequestCompleted(
+				function(oEvent) {
+
+					// Set first Field Type to be the selected key of the IconTabBar
+					if (_oJsonModel.getData().d.results.length > 0) {
+						var firstKey = _oJsonModel.getData().d.results[0].name;	
+						oIconTabBar.setSelectedKey(firstKey);
+					}
+					
+					// Inactivate busy indicator
+					that.getView().setBusy(false);
+				}
+			);
+			
+			// Attach event handler: Request Failed
+			oJSONModel.attachRequestFailed(
+				function(oEvent) {
+					console.log("Error occurred in oJSONModel.attachRequestFailed.");
+					console.log(oEvent);
+					
+					// Inactivate busy indicator
+					that.getView().setBusy(false);
+				}
+			);
+			
+			// Get data from system
+			oJSONModel.loadData(sFinalUrl);
+			
+			// Return model
+			return oJSONModel;
+		},
+
+	};
+});

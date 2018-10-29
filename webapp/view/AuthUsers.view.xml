@@ -1,0 +1,37 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="dk.dhek.DqgUserManagement.controller.AuthUsers"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<App>
+		<pages>
+			<Page title="Authorization API: Users">
+				<content>
+	
+					<Table id="idUserList"
+						items="{
+							path: '/users', 
+							sorter: { path: 'userId' } 
+						}"
+					>
+						<columns>
+							<Column><Text text="User"/></Column>
+							<Column><Text text="First Name"/></Column>
+							<Column><Text text="Last Name"/></Column>
+							<Column><Text text="Company"/></Column>
+						</columns>
+						
+						<items>
+							<ColumnListItem type="Navigation" press="navToUserDetailsView">
+								<cells>
+									<Text text="{userId}" />
+									<Text text="{firstName}" />
+									<Text text="{lastName}" />
+									<Text text="{company}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
