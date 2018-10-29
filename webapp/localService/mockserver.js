@@ -12,7 +12,7 @@ sap.ui.define([
 		 * @public
 		 */
 		init: function() {
-			MockServerJson.initMockServer();
+			MockServerJson.init();
 			MockServerOdata.init();
 		}
 		

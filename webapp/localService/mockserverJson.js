@@ -10,13 +10,10 @@ sap.ui.define([
 		 * @public
 		 */
 		init: function() {
+			this.initMockForToken();
+			
 			console.log("*********** Init Mock Server: JSon model ***********");
-			this.initMockServer();
-
-		},
-		
-		
-		initMockServer : function() {
+			
 			// Mock Data: Groups
 			var oMockDataGroups = this.createResponseObject("groups/", "../localService/mockdata/Groups.json");
 				
@@ -48,7 +45,6 @@ sap.ui.define([
 			var oMockData_s0015986424_Groups = this.createResponseObject("users/groups\\?userId=s0015986424", "../localService/mockdata/s0015986424_Groups.json");
 			var oMockData_s0015986424_Roles = this.createResponseObject("users/roles\\?userId=s0015986424", "../localService/mockdata/s0015986424_Roles.json");
 			
-
 			this.createNewMockServer(
 				"/DEK_API_FROM_NEO_APP/authorization/v1/accounts/a6c4db1e3/", 
 				[
@@ -70,7 +66,20 @@ sap.ui.define([
 				]
 			);
 		},
+		
+		
+		initMockForToken : function() {
+			console.log("*********** Init Mock Server: JSon model (token) ***********");
+			var tokenResponse = this.createResponseObject("v1\\?grant_type=client_credentials", "../localService/mockdata/token.json");
 			
+			this.createNewMockServer(
+				"/DEK_API_FROM_NEO_APP/oauth2/apitoken/", 
+				[
+					tokenResponse
+				]
+			);
+		},
+		
 			
 		createResponseObject : function(sRegexPath, sResponseFile) {
 			var responseObject =
@@ -99,7 +108,6 @@ sap.ui.define([
 
 			oMockServer.start();
 			console.log("New MockServer created for " + sRootUri);
-			console.log(oMockServer);
 		}
 		
 	};
