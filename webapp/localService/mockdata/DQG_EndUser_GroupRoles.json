@@ -1,0 +1,7 @@
+{
+	"roles": [{
+		"name": "DQG_EndUser --- MOCK",
+		"applicationName": "nwc",
+		"providerAccount": "portal"
+	}]
+}

@@ -1,0 +1,11 @@
+{
+	"groups": [{
+		"name": "MOCK --- DQG_EndUser"
+	}, {
+		"name": "DQG_Root"
+	}, {
+		"name": "DQG_Admin"
+	}, {
+		"name": "DQG_SuperUser"
+	}]
+}

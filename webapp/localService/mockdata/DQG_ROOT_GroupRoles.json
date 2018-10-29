@@ -1,0 +1,11 @@
+{
+	"roles": [{
+		"name": "TENANT_ADMIN --- MOCK",
+		"applicationName": "nwc",
+		"providerAccount": "portal"
+	}, {
+		"name": "DQG_Admin",
+		"applicationName": "nwc",
+		"providerAccount": "portal"
+	}]
+}

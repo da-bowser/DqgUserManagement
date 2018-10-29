@@ -1,0 +1,11 @@
+{
+	"roles": [{
+		"name": "weird role 1",
+		"applicationName": "nwc",
+		"providerAccount": "portal"
+	}, {
+		"name": "weird role 2",
+		"applicationName": "weirder",
+		"providerAccount": "weirdest"
+	}]
+}
